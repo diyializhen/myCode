@@ -3,7 +3,7 @@
 -----
 ### 方法名`timeFormat`
 + 参数：
-    + 第一种与js中Date对象相同参数，如：
+    + 第一种与js中原生Date对象相同参数，如：
     ```javascript    
         timeFormat() //不传参数为当前时间    
         timeFormat(milliseconds)
