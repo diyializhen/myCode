@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="./timeFormat.js"></script>
+<script type="text/javascript">
+
+	console.log(timeFormat(2019,0,8))
+    console.log(timeFormat('2019-06-14T00:00:00'))
+    console.log(timeFormat().format())
+    console.log(timeFormat().getTime())
+    console.log(timeFormat('2019-06-14').format())
+    console.log(timeFormat('2019/06/14 08:08:08').format('YY-MM-DD hh:mm:ss'))
+    console.log(timeFormat('2019-06-14ff').format())//非法参数
+    console.log(timeFormat('2019-06-14').format('今天日期是YY/MM/DD'))
+    console.log(timeFormat('2019-08-08').format('今天日期是YY年M月D日'))
+
+
+</script>
+</html>
