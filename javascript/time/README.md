@@ -1,7 +1,7 @@
 ## 时间格式转换方法
 
 -----
-###方法名`timeFormat`
+### 方法名`timeFormat`
 + 参数：
     + 第一种与js中Date对象相同参数，如：
     ```javascript    
@@ -68,7 +68,7 @@
         console.log(timeFormat().getTime())
     ```
     
-###`timeFormat`包含的方法    
+### `timeFormat`包含的方法    
 * isDate    
     * 参数为对象，返回该对象是否为Date对象（boolean）
 * isValidDate
