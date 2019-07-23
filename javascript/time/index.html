@@ -16,7 +16,11 @@
 
 	console.log(timeFormat(2019,0,8))
     console.log(timeFormat('2019-06-14T00:00:00'))
+
     console.log(timeFormat().format())
+    timeFormat.setDefaultFormat('YYYY年M月D日 hh时mm分ss秒')
+    console.log(timeFormat().format())
+
     console.log(timeFormat().getTime())
     console.log(timeFormat('2019-06-14').format())
     console.log(timeFormat('2019/06/14 08:08:08').format('YY-MM-DD hh:mm:ss'))

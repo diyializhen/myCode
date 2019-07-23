@@ -32,7 +32,7 @@
             m:'',
             ss:'',//秒
             s:'',
-            defaultFormat:'YYYY-MM-DD hh:mm:ss',//使用format方法时默认的格式
+            defaultFormat:'YYYY-MM-DD hh:mm:ss',//使用format方法时默认的格式，可通过timeFormat.setDefaultFormat()改变
             _args:[],//此方法传入的参数
             _isValid:true,//参数是否合法
             _date:{},//此方法得到的时间对象
@@ -75,10 +75,16 @@
     * 参数为Date对象，返回该Date对象是否是一个合法的时间 （boolean）
 * formatNumber
     * 参数为Number或者String的数字，返回字符串，如果只有一位则前面加0，否则不变   
+* `setDefaultFormat`
+    * 参数为String，设置`timeFormat.format`方法的默认格式，若不设置默认为'YY-MM-DD hh:mm:ss'，设置之后为新的值
     
 例：
 ```javascript
     console.log(timeFormat.isDate(new Date())) //true
     console.log(timeFormat.isValidDate(new Date('08/08/08dd'))) //false
     console.log(timeFormat.formatNumber(1)) //01
+    
+    console.log(timeFormat().format()) //2019-07-23 18:33:26
+    timeFormat.setDefaultFormat('YYYY年M月D日 hh时mm分ss秒')
+    console.log(timeFormat().format()) //2019年7月23日 18时33分26秒
 ```

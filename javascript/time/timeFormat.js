@@ -1,4 +1,7 @@
 var timeFormat=(function () {
+    var bind=Function.prototype.bind;
+    var defaultInvalidDate = 'Invalid date';
+    var defaultFormat='YYYY-MM-DD hh:mm:ss';
     function isDate(dateObject){
         return dateObject instanceof Date || Object.prototype.toString.call(dateObject) === '[object Date]';
     };
@@ -9,10 +12,11 @@ var timeFormat=(function () {
         n = n.toString();
         return n[1] ? n : '0' + n;
     };
+    function setDefaultFormat(str) {
+        defaultFormat=str;
+    }
 
     function tf() {
-        var bind=Function.prototype.bind;
-        var defaultInvalidDate = 'Invalid date';
         var timeArgs=Array.prototype.slice.call(arguments);
 
         function getTime(){
@@ -45,7 +49,7 @@ var timeFormat=(function () {
             this._date=dateObj;
             this._isValid=isValidDate(dateObj);
             this._args=args;
-            this.defaultFormat='YYYY-MM-DD hh:mm:ss';
+            this.defaultFormat=defaultFormat;
             var year=String(dateObj.getFullYear());
             var month=String(dateObj.getMonth()+1);
             var day=String(dateObj.getDate());
@@ -74,5 +78,6 @@ var timeFormat=(function () {
     tf.isDate=isDate;
     tf.isValidDate=isValidDate;
     tf.formatNumber=formatNumber;
+    tf.setDefaultFormat=setDefaultFormat;
     return tf;
 })();
