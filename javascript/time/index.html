@@ -10,6 +10,10 @@
 <script type="text/javascript" src="./timeFormat.js"></script>
 <script type="text/javascript">
 
+    console.log(timeFormat.isDate(new Date())) //true
+    console.log(timeFormat.isValidDate(new Date('08/08/08dd'))) //false
+    console.log(timeFormat.formatNumber(1)) //01
+
 	console.log(timeFormat(2019,0,8))
     console.log(timeFormat('2019-06-14T00:00:00'))
     console.log(timeFormat().format())
@@ -17,9 +21,8 @@
     console.log(timeFormat('2019-06-14').format())
     console.log(timeFormat('2019/06/14 08:08:08').format('YY-MM-DD hh:mm:ss'))
     console.log(timeFormat('2019-06-14ff').format())//非法参数
-    console.log(timeFormat('2019-06-14').format('今天日期是YY/MM/DD'))
+    console.log(timeFormat('2019-06-14').format('今天日期是YYYY/MM/DD'))
     console.log(timeFormat('2019-08-08').format('今天日期是YY年M月D日'))
-
 
 </script>
 </html>

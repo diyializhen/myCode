@@ -56,12 +56,29 @@
         console.log(timeFormat('2019-06-14').format())
         console.log(timeFormat('2019/06/14 08:08:08').format('YY-MM-DD hh:mm:ss'))
         console.log(timeFormat('2019-06-14ff').format())//非法参数,则返回'Invalid date'
-        console.log(timeFormat('2019-06-14').format('今天日期是YY/MM/DD'))
+        console.log(timeFormat('2019-06-14').format('今天日期是YYYY/MM/DD'))
         console.log(timeFormat('2019-08-08').format('今天日期是YY年M月D日'))
     ```     
     
      + 2、`getTime`    
     获取`timeFormat`方法传入时间对应的时间戳
+    
+    例：
     ```javascript
         console.log(timeFormat().getTime())
     ```
+    
+###`timeFormat`包含的方法    
+* isDate    
+    * 参数为对象，返回该对象是否为Date对象（boolean）
+* isValidDate
+    * 参数为Date对象，返回该Date对象是否是一个合法的时间 （boolean）
+* formatNumber
+    * 参数为Number或者String的数字，返回字符串，如果只有一位则前面加0，否则不变   
+    
+例：
+```javascript
+    console.log(timeFormat.isDate(new Date())) //true
+    console.log(timeFormat.isValidDate(new Date('08/08/08dd'))) //false
+    console.log(timeFormat.formatNumber(1)) //01
+```
