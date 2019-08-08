@@ -1,17 +1,17 @@
 function isJson(str) {
-    var toString=Object.prototype.toString;
+    var toString = Object.prototype.toString;
     if (toString.call(str) === "[object String]") {
         try {
-            var obj=JSON.parse(str);
-            if(toString.call(obj) === "[object Object]"){
+            var obj = JSON.parse(str);
+            if (toString.call(obj) === "[object Object]") {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        } catch(e) {
+        } catch (e) {
             return false;
         }
-    }else{
+    } else {
         return false;
     }
 }
