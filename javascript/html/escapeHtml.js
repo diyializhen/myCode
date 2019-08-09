@@ -1,5 +1,5 @@
 function escapeHtml(htmlString, ifFormat) {
-    var reg = ifFormat ? /\s|\n|(\r\n)|\<|\>|\/|\"|\'|\&|\:/g : /[\<\>\/\"\'\&\:]/g;
+    var reg = ifFormat ? /\s|\n|(\r\n)|\<|\>|\/|\"|\'|\&/g : /[\<\>\/\"\'\&]/g;
     return htmlString.replace(reg, function (match) {
         switch (match) {
             case '<':
@@ -14,8 +14,6 @@ function escapeHtml(htmlString, ifFormat) {
                 return '&#x27;';
             case '\&':
                 return '&amp;';
-            case '\:':
-                return '&#58;';
             case ' ':
                 return '&nbsp;';
             case '\n':
