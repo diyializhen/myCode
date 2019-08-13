@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="./deepCopy.js"></script>
+<script>
+    //深层复制数据(递归调用实现，可复制互相引用或引用自身的对象)
+    //数组和对象会深层复制，其他数据都是直接赋值，
+    //包括null，undefined，function，regExp，date，htmlElement(通过js获取到的html元素对象或者集合)
+
+    var obj1 = {
+        obj: null,
+    }
+    var obj = {
+        nan: NaN,
+        '0': 0,
+        un: undefined,
+        Null: null,
+        fn: function () {
+            alert('111');
+        },
+        obj: null,
+        obj1: obj1
+    }
+    obj1.obj = obj;
+    obj.obj = obj;
+
+    var obj_copy = deepCopy(obj);
+    // obj.nan=666;
+    // obj.obj1=333;
+    console.log(obj);
+    console.log(obj_copy);
+
+
+    var arr = [{a: 1}, obj, null, undefined, 1, 'haha', 0, [1, 2, 3]];
+
+    var arr_copy = deepCopy(arr);
+    // arr[0].a=2;
+    console.log(arr);
+    console.log(deepCopy(arr_copy));
+
+</script>
+</html>
