@@ -8,7 +8,7 @@ function deepCopy(data) {
         regExp: '[object RegExp]',
         string: '[object String]',
         number: '[object Number]',
-        boolean: '[object Boolean]',
+        boolean: '[object Boolean]'
     }
     var visitObjs = [];
     var copyVisitObjs = [];
