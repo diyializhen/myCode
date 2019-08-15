@@ -1,17 +1,45 @@
 function deepCopy(data) {
     var toString = Object.prototype.toString;
+    var valueType = {
+        object: '[object Object]',
+        array: '[object Array]',
+        arguments: '[object Arguments]',
+        date: '[object Date]',
+        regExp: '[object RegExp]',
+        string: '[object String]',
+        number: '[object Number]',
+        boolean: '[object Boolean]',
+    }
     var visitObjs = [];
     var copyVisitObjs = [];
-
+    var reFlags = /\w*$/;
+    function cloneRegExp(regexp) {
+        var result = new regexp.constructor(regexp.source, reFlags.exec(regexp));
+        result.lastIndex = regexp.lastIndex;
+        return result;
+    }
     function copy(_data) {
+        var Ctor = _data.constructor;
         var type = toString.call(_data);
         var obj;
-        if (type == '[object Object]') {
-            obj = {};
-        } else if (type == '[object Array]') {
-            obj = [];
-        } else {
-            return _data;
+        switch (type) {
+            case valueType.object:
+                obj = {};
+                break;
+            case valueType.array:
+            case valueType.arguments:
+                obj = [];
+                break;
+            case valueType.regExp:
+                return cloneRegExp(_data);
+            case valueType.date:
+            case valueType.boolean:
+                return new Ctor(+_data);
+            case valueType.number:
+            case valueType.string:
+                return new Ctor(_data);
+            default:
+                return _data;
         }
         visitObjs.push(_data);
         copyVisitObjs.push(obj);
@@ -32,6 +60,5 @@ function deepCopy(data) {
         }
         return obj;
     }
-
     return copy(data);
 }
