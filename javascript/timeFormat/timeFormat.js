@@ -8,7 +8,7 @@ var timeFormat = (function () {
     };
 
     function isValidDate(dateObject) {
-        return isDate(dateObject) && !isNaN(dateObject.valueOf())
+        return isDate(dateObject) && !isNaN(dateObject.valueOf());
     };
 
     function formatNumber(n) {
