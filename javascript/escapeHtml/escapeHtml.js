@@ -17,6 +17,7 @@ function escapeHtml(htmlString, ifFormat) {
             case ' ':
                 return '&nbsp;';
             case '\n':
+            case '\r\n':
                 return '<br/>';
             default:
                 return match;
