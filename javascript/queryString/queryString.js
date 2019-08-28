@@ -14,7 +14,7 @@ var queryString = (function () {
         isObject: isObject,
         parse: function (str) {
             var result = {};
-            var queryStr = str || (window ? window.location.search : '');
+            var queryStr = str === undefined ? (window ? window.location.search : '') : str;
             if (typeof queryStr == 'string' && queryStr.length) {
                 if (queryStr[0] === '?') {
                     queryStr = queryStr.slice(1);
