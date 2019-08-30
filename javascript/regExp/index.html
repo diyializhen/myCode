@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="regTest.js"></script>
+<script>
+
+    var reg = /\{([^\{]+?)\}/g;
+    // var reg=/\{(.+?)\}/g;
+    var str = 'fasdf{ff1ff2}faf12}345}sd';
+    console.log(str.match(reg))
+
+    var str = "http://www.aaa.com:80/html/html-test.html?a=1#111?1231";
+    // var str = "http://127.0.0.1:8080/html/html-test.html?a=1#111?";
+    var patt1 = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
+    arr = str.match(patt1);
+    console.log(arr)
+
+
+    console.log(isEmail('18888888888@163.com'))
+    console.log(isMobile('18888888888'))
+    console.log(isMobile('12888888888'))
+    console.log(isURL('http://www.baidu.com?key=111#222'))
+    console.log(isPhone('0111-1111111'))
+    console.log(isChinese('哈哈哈'))
+    console.log(IdCodeValid('111111181111111114'))
+
+
+    console.log(isLicensePlate('沪A12345'))
+    console.log(isLicensePlate('沪A1234挂'))
+    console.log(isLicensePlate('沪ADA3456'))
+    console.log(isLicensePlate('沪A12345D'))
+
+</script>
+</html>
