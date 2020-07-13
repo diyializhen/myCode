@@ -12,9 +12,9 @@ var queryString = (function () {
     var qs = {
         isArray: isArray,
         isObject: isObject,
-        parse: function (str) {
+        parse: function (str, ifDecodeURI) {
             var result = {};
-            var queryStr = str === undefined ? (window ? window.location.search : '') : str;
+            var queryStr = str === undefined ? '' : str;
             if (typeof queryStr == 'string' && queryStr.length) {
                 if (queryStr[0] === '?') {
                     queryStr = queryStr.slice(1);
@@ -33,8 +33,8 @@ var queryString = (function () {
                         key = item;
                         val = '';
                     }
-                    key = decodeURIComponent(key);
-                    val = decodeURIComponent(val);
+                    key = ifDecodeURI ? decodeURIComponent(key) : key;
+                    val = ifDecodeURI ? decodeURIComponent(val) : val;
                     if (result[key] === undefined) {
                         result[key] = val;
                     } else if (isArray(result[key])) {
@@ -46,17 +46,20 @@ var queryString = (function () {
             }
             return result;
         },
-        stringify: function (obj) {
+        stringify: function (obj, ifEncodeURI) {
             var str = [];
             if (obj && isObject(obj)) {
                 for (var key in obj) {
                     if (obj.hasOwnProperty(key)) {
+                        var _key = ifEncodeURI ? encodeURIComponent(key) : key;
                         if (isArray(obj[key])) {
                             for (var i = 0; i < obj[key].length; i++) {
-                                str.push([encodeURIComponent(key), encodeURIComponent(obj[key][i])].join('='))
+                                var _val = ifEncodeURI ? encodeURIComponent(obj[key][i]) : obj[key][i];
+                                str.push([_key, _val].join('='))
                             }
                         } else {
-                            str.push([encodeURIComponent(key), encodeURIComponent(obj[key])].join('='))
+                            var _val = ifEncodeURI ? encodeURIComponent(obj[key]) : obj[key];
+                            str.push([_key, _val].join('='))
                         }
                     }
                 }

@@ -4,10 +4,10 @@
 * 获取和转换queryString
 
 * 包含方法：
-    * `parse`由queryString获取对象数据，参数为`string`，若不传则获取`window.location.search`。方法会对key和value做`decodeURIComponent`解码。
+    * `parse`由queryString获取对象数据，参数1为`string`，参数2为`Boolean`是否对key和value做`decodeURIComponent`解码，默认false。
     ```javascript
     var str='?a=1&b=2&b=1&=3&c=&';
-    console.log(queryString.parse(str));
+    console.log(queryString.parse(str,true));
     /*结果
     *{
     *    a:'1',
@@ -17,7 +17,7 @@
     * }
      */
     ```     
-    * `stringify`将对象转化为queryString，参数为`object`（必须为普通对象，否则返回空字符串），方法会对key和value做`encodeURIComponent`转码。
+    * `stringify`将对象转化为queryString，参数1为`object`，参数2为`Boolean`是否对key和value做`encodeURIComponent`转码，默认false。
     ```javascript
     var obj={
         a:1,
